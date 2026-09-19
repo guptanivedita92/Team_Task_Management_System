@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="xunit" Version="2.9.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <!-- Brings in Microsoft.AspNetCore.Http (StatusCodes) since this test project
+         is plain Sdk, not Sdk.Web, and doesn't get those implicit usings for free. -->
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TaskManagement.Api\TaskManagement.Api.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Plain Sdk (not Sdk.Web) doesn't add these implicit usings automatically. -->
+    <Using Include="Microsoft.AspNetCore.Http" />
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+</Project>
